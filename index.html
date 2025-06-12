@@ -1,1 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, #ffe6f0, #fcd5ce);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
 
+    .login-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 1rem;
+      color: #d23669;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 0.5rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+    }
+
+    .login-box button {
+      background-color: #d23669;
+      color: white;
+      border: none;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    .error {
+      color: red;
+      margin-top: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-box">
+    <h2>Bem-vinda, Srta. Marion 💖</h2>
+    <input type="text" id="username" placeholder="Nome completo">
+    <input type="password" id="password" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+    <div id="errorMessage" class="error"></div>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (username === "Isadora Marion da Silva" && password === "9182736455isA*") {
+        // Redirecionar para o site se as credenciais estiverem corretas
+        window.location.href = "indexELA.html"; // Substitua por sua URL ou página
+      } else {
+        document.getElementById("errorMessage").textContent = "Nome ou senha incorretos.";
+      }
+    }
+  </script>
+
+</body>
+</html>
