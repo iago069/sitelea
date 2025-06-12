@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para meu amor ❤️ - Nosso Love Story</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Reset e Estilos Globais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff5f5;
+            color: #333;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Cabeçalho Romântico */
+        header {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 4rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+            animation: fadeIn 2s;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: white;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        /* Botão Principal */
+        .btn {
+            display: inline-block;
+            background-color: #ff6b6b;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 1rem 0.5rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn:hover {
+            background-color: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        /* Seções */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            color: #d23669;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        /* Seção Destino */
+        .destiny-box {
+            background-color: white;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            border-left: 5px solid #ff6b6b;
+        }
+
+        .destiny-box h3 {
+            color: #ff6b6b;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .destiny-box p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .destiny-box ul {
+            padding-left: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .destiny-box li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Seção IF */
+        .if-story {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-top: 3px dashed #ff6b6b;
+            border-bottom: 3px dashed #ff6b6b;
+        }
+
+        .if-scene {
+            margin-bottom: 2rem;
+        }
+
+        .if-scene h4 {
+            color: #ff6b6b;
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: #ff6b6b;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 3px solid #ff6b6b;
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .timeline-item:nth-child(odd)::after {
+            right: -10px;
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -10px;
+        }
+
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Galeria de Fotos */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 2rem;
+        }
+
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+            aspect-ratio: 3/4;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Mensagem Especial */
+        #message {
+            background-color: #f8e1e4;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .typing-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.8rem;
+            color: #d23669;
+            min-height: 200px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            line-height: 1.6;
+        }
+
+        /* Contador de Dias */
+        .counter {
+            font-size: 2rem;
+            color: #ff6b6b;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        /* Surpresa Escondida */
+        .surprise {
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .hidden {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        /* Quiz */
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .quiz-question {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #ff9a9e;
+        }
+
+        .quiz-question h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #d23669;
+            margin-bottom: 1rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .quiz-btn {
+            padding: 0.8rem;
+            border: 2px solid #ff9a9e;
+            background: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: left;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .quiz-btn:hover {
+            background-color: #fff5f5;
+        }
+
+        .quiz-btn.correct {
+            background-color: #d4edda;
+            border-color: #28a745;
+        }
+
+        .quiz-btn.wrong {
+            background-color: #f8d7da;
+            border-color: #dc3545;
+        }
+
+        .quiz-result {
+            text-align: center;
+            margin-top: 2rem;
+            animation: fadeIn 0.5s;
+        }
+
+        #result-message {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        /* Animações */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1.5s forwards;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+
+            .timeline-item::after {
+                left: 21px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Cabeçalho Romântico -->
+    <header>
+        <h1>Meu amor, isso é totalmente pra você! ❤️</h1>
+        <p class="subtitle">Uma pequena lembrança do quanto você é especial para mim</p>
+        <div>
+            <a href="#destiny" class="btn">Nosso Destino</a>
+            <a href="#story" class="btn">Nossa História</a>
+            <a href="#gallery" class="btn">Nossas Fotos</a>
+        </div>
+    </header>
+
+    <!-- Seção Destino -->
+    <section id="destiny">
+        <h2>O Plano do Universo</h2>
+        <div class="destiny-box">
+            <h3>Como o Destino Nos Uniu</h3>
+            <p>Quando você nasceu, Deus fez uma reunião de emergência:</p>
+            <p><em>"Pessoal, acabamos de criar a garota mais incrível do mundo. Alguém tem ideias para um namorado à
+                    altura?"
+
+                </em></p>
+            <p> Eles pensaram em um princípe encantado, mas decidiram que seria mais divertido criar um cara que só sabe
+                fazer piadas ruins e jogar bola!</p>
+
+            <h3 style="margin-top: 2rem;">Fatos Científicos:</h3>
+            <ul>
+                <li><strong>Você</strong> veio ao mundo com um manual chamado <em>"Como Ser Perfeita"</em></li>
+                <li><strong>Eu</strong> vim com um rótulo: <em>"Montar com cuidado - produto frágil e meio
+                        desengonçado"</em></li>
+                <li>Enquanto você <strong>já sorria</strong> nas fotos de bebê, eu <strong>chorava</strong> porque ainda
+                    não te conhecia</li>
+            </ul>
+
+            <p style="margin-top: 1.5rem; font-style: italic;">Felizmente, o universo acertou dessa vez - e agora
+                <strong>ninguém nos separa</strong> (nem mesmo meu talento nato pra banco de dados).
+            </p>
+        </div>
+    </section>
+
+    <!-- Seção IF -->
+    <section id="if">
+        <h2>A Grande Comédia do IF</h2>
+        <div class="if-story">
+            <div class="if-scene">
+                <h4>Cena 1: O grande IF</h4>
+                <p><strong>Você:</strong> A aluna focada, anotando tudo, com cara de "vou dominar o mundo com essa
+                    matéria".</p>
+                <p><strong>Eu:</strong> O cara que vivia perdido, e que prefere perder a vida do que uma piada.</p>
+                <p><strong>Deus:</strong> "Coloquem os dois na mesma turma... VAI DAR CERTO."</p>
+                <p><strong>Nós dois:</strong> Zero interação. Nada. Nadica de nada.</p>
+            </div>
+
+            <div class="if-scene">
+                <h4>Cena 2: O começo e as provas</h4>
+                <p><strong>Você:</strong> Uma linda garota pensando "Que moleque burro, é assim que faz o botão de
+                    DELETAR".</p>
+                <p><strong>Eu:</strong> Um garoto extremamente grato por uma desconhecida correr o risco de ser pego, e
+                    mesmo assim decidiu ajudar.</p>
+                <p><strong>Deus:</strong> "Questione meus métodos, mas não meus resultados!"</p>
+            </div>
+            <div class="if-scene">
+                <h4>Cena 3:A grande AJUDA de João Krammes</h4>
+                <p><strong>João:</strong>"Viu isa, ta vendo aquele lorpa ali, ele disse pra mim e pros pia que ele te quer".</p>
+                <p><strong>Você</strong>"Se ele é homem mesmo, ele que venha falar comigo"- Disse isadora, me achando o cara mais idiota e sem atitude do mundo.</p>
+                <p><strong>Eu:</strong> Após descobrir da GRANDE ajuda de João Krammes, reagiu da melhor forma possível...xinguei o joão de tudo que eu podia</p>
+                <p><strong>Eu denovo:</strong> Naquele dia eu falei "minhas chances com ela acabaram totalmente". Eu ainda não perdoei ele.</p>
+            </div>
+
+            <div class="if-scene">
+                <h4>Ironia Final:</h4>
+                <p>A gente <strong>dividiu o mesmo espaço, as mesmas provas, os mesmos professores</strong> e, mesmo
+                    assim, <strong>não fazíamos ideia de que o outro existia.</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Nossa História -->
+    <section id="story">
+        <h2>Nossa Jornada</h2>
+        <div class="timeline">
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <h3>1° ano desse grande IF</h3>
+                    <p>11/03 até 08/12</p>
+                    <p>Posso dizer que nas primeiras semanas de IF eu não fazia ideia da existencia de uma garota
+                        chamada Isadora Marion da Silva.
+                        Acho que uma boa parte disso se deve ao fato de que eu estava mais preocupado em o Grêmio não
+                        ser rebaixado do que em conhecer alguém.
+
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <h3>1° ano parte 2</h3>
+                    <p> Mas, a partir da metade do ano, algo mudou. Eu comecei a perceber que havia uma garota especial,
+                        com um sorriso que iluminava qualquer ambiente. Mesmo sem ser próximo, você já tinha chamado
+                        minha atenção de uma forma que ninguém mais conseguia.
+                        E então, veio a prova de Banco de Dados. Eu, completamente perdido, sem saber nem por onde
+                        começar, e você, com toda paciência do mundo, me ajudou. Foi ali que percebi que, além de linda,
+                        você tinha um coração enorme. Cada ajuda sua era como um pequeno empurrão do destino, nos
+                        aproximando cada vez mais.
+                        Mas ainda éramos apenas dois estranhos, cada um com seus caminhos, e assim se encerrou o
+                        primeiro ano do IF, de desconhecidos a colegas de turma.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <h3>2° ano</h3>
+                    <p>11/03 até 08/12</p>
+                    <p>No segundo ano do IF, as coisas começaram a mudar. Durante a maior parte do ano, continuamos como
+                        colegas distantes, cada um focado em suas próprias coisas. Mas, no final do ano, algo diferente
+                        aconteceu. Foi quando começamos a conversar de verdade. Nossas conversas eram simples, mas
+                        cheias de significado. Aos poucos, fui descobrindo o quanto você era incrível, e cada palavra
+                        trocada fazia meu coração bater mais forte. Foi nesse momento que percebi que algo especial
+                        estava nascendo entre nós (eu sou emocionado meu amor).</p>
+                </div>
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <h3>3° ano </h3>
+                    <p>01/01 até o infinito</p>
+                    <p>O terceiro ano foi o mais especial de todos. Foi quando começamos a conversar pelo Instagram.
+                        Mesmo que suas respostas fossem curtas e secas, eu continuava insistindo, porque algo em você me
+                        fazia querer estar sempre por perto. Lembro-me do texto de Ano Novo que enviei para você. Foi
+                        minha primeira declaração sincera, mas acho que você não percebeu como uma declaração. Para mim,
+                        foi um momento de abrir meu coração.</p>
+                    <p>Então veio meu aniversário. Quando recebi o texto que você escreveu para mim, algo mudou. Eu, que
+                        já estava apaixonado, tive a certeza de que te amava. Foi um sentimento tão forte que parecia
+                        impossível de ignorar.</p>
+
+                </div>
+
+            </div>
+            <div class="timeline-item fade-in">
+                <div class="timeline-content">
+                    <h3>3° ano parte 2</h3>
+                    <p>O aniversário da Talita no Moinho foi um marco. Foi o início de tudo. Ou melhor, nossas
+                        "corridas" foram o começo de tudo, pelo menos para mim. Mas voltando ao Moinho, aquela noite
+                        foi mágica. Ficar ao seu lado a noite toda foi como viver um sonho. E mesmo que no final
+                        tenha sido apenas um selinho, eu fiquei bobo o resto da semana. Foi um momento que ficou
+                        gravado no meu coração.</p>
+                    <p>Depois disso, tudo foi só sucesso. Cada momento ao seu lado se tornou especial, e nossa
+                        história começou a ganhar vida de verdade. Foi o início de algo que eu sabia que seria
+                        incrível.
+                    </p>
+                    <p>E eu espero poder comemorar outros 100 anos ao seu lado, e depois, a eternidade.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeria de Fotos -->
+    <section id="gallery">
+        <h2>Nossos Momentos</h2>
+        <div class="gallery">
+            <!-- Substitua pelas suas fotos -->
+            <div class="gallery-item">
+                <img src="imagens/WhatsApp Image 2025-06-11 at 15.50.33 (1).jpeg" alt="Nossa foto">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/WhatsApp Image 2025-06-11 at 15.53.53.jpeg" alt="Nossa foto">
+            </div>
+            <div class="gallery-item">
+                <img src="imagens/WhatsApp Image 2025-06-11 at 15.50.33.jpeg" alt="Nossa foto">
+            </div>
+
+            <div class="gallery-item">
+                <img src="imagens/WhatsApp Image 2025-06-11 at 15.53.54.jpeg" alt="Nossa foto">
+            </div>
+            <!-- Adicione mais fotos -->
+        </div>
+    </section>
+
+    <!-- Mensagem Especial -->
+    <section id="message">
+        <h2>Uma Mensagem Para Você</h2>
+        <div class="typing-text" id="typed-text"></div>
+        <button class="btn" id="music-btn">Tocar Nossa Música</button>
+        <div id="music-player" style="margin-top: 1rem;"></div>
+    </section>
+
+    <!-- Contador de Dias -->
+    <section style="text-align: center;">
+        <h2>Tempo Juntos</h2>
+        <div class="counter" id="days-counter"></div>
+    </section>
+
+    <!-- Surpresa Escondida -->
+    <div class="surprise">
+        <button class="btn" id="surprise-btn">Clique para uma Surpresa!</button>
+        <div class="hidden" id="surprise-content">
+            <p>Eu te amo mais que tudo! ❤️</p>
+            <!-- Você pode adicionar um vídeo ou áudio aqui -->
+        </div>
+    </div>
+
+    <!-- Quiz -->
+    <section id="quiz" style="background-color: #f8e1e4; padding: 4rem 2rem;">
+        <h2>Quiz: O Quanto Você Sabe Sobre Nós?</h2>
+        <div class="quiz-container">
+            <div class="quiz-question">
+                <h3>1. Onde ocorreu a grande ajuda de João Krammes?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-correct="true">No IF, após uma prova de algoritmo</button>
+                    <button class="quiz-btn" data-correct="true">Numa prova de Banco de Dados</button>
+                    <button class="quiz-btn" data-correct="false">Na fila do almoço</button>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>2. Por que não nos notamos no IF?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-correct="false">Porque éramos muito tímidos ou simplismente não era a
+                        hora!</button>
+                    <button class="quiz-btn" data-correct="true">Porque você estava ocupada sendo responsável e eu
+                        ocupado sofrendo em banco de dados!</button>
+                    <button class="quiz-btn" data-correct="false">Porque o destino queria fazer suspense!</button>
+                </div>
+            </div>
+
+            <div class="quiz-question">
+                <h3>3. Qual era minha habilidade especial no IF?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-correct="false">Decorar fórmulas</button>
+                    <button class="quiz-btn" data-correct="false">Fazer amigos facilmente</button>
+                    <button class="quiz-btn" data-correct="true">Olhar com olhar apaixonado para você e você não perceber</button>
+                </div>
+            </div>
+
+
+            <div class="quiz-question">
+                <h3>4. Por que eu te amo?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-btn" data-correct="true">Porque você me ajudava em banco de dados</button>
+                    <button class="quiz-btn" data-correct="true">Porque seu sorriso derrete até meu último
+                        neurônio</button>
+                    <button class="quiz-btn" data-correct="true">Porque você me atura mesmo quando eu falo
+                        besteira</button>
+                    <button class="quiz-btn" data-correct="true">Todas as alternativas acima (e mais um milhão de motivos que não
+                        cabem aqui)</button>
+                </div>
+            </div>
+            <div class="quiz-result hidden" id="quiz-result">
+                <h3>Resultado: <span id="score">0</span>/4 acertos!</h3>
+                <p id="result-message"></p>
+                <button class="btn" id="retry-btn">Tentar novamente</button>
+
+                <button id="loveReasonsBtn" class="btn" style="margin-top: 1rem; background-color: #d23669;">
+                    Ver Todos os Motivos
+                </button>
+
+                <script>
+                    document.getElementById("loveReasonsBtn").addEventListener("click", function () {
+                        window.location.href = "motivos.html"; // substitua "motivos.html" pelo caminho desejado
+                    });
+                </script>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer>
+        <p>Feito com amor por seu maior adimirador, Sr.Ariel!</p>
+    </footer>
+
+    <script>
+        // Efeito de digitação na mensagem
+        const message = `Desde o momento em que te conheci de verdade, minha vida ganhou novas cores.
+Cores suaves, intensas, inesperadas… cores que me fazem sorrir só de pensar em você.
+
+Você apareceu como quem não quer nada e, sem perceber, foi tomando um espaço enorme dentro de mim. O seu jeito de falar, o brilho nos seus olhos, o modo como enxerga o mundo — tudo isso me fez (e ainda faz) te admirar mais e mais.
+
+Estar perto de você é como respirar alívio. É sentir que, mesmo nos dias difíceis, tudo vai ficar bem. Porque você existe. Porque você está aqui.
+E isso, por si só, já torna tudo mais bonito.
+
+Obrigado por ser exatamente quem você é. Por existir. Por me permitir fazer parte da sua história.
+
+Com todo meu amor,
+Seu eterno admirador 💌`;
+        const typedText = document.getElementById('typed-text');
+        let i = 0;
+
+        function typeWriter() {
+            if (i < message.length) {
+                typedText.innerHTML += message.charAt(i) === '\n' ? '<br>' : message.charAt(i);
+                i++;
+                setTimeout(typeWriter, 50);
+            }
+        }
+
+        // Contador de dias juntos
+        function updateCounter() {
+            const startDate = new Date('2023-03-11'); // Altere para a data do seu relacionamento
+            const today = new Date();
+            const diffTime = Math.abs(today - startDate);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            document.getElementById('days-counter').textContent = `${diffDays} dias como colega e agora...como o meu maior amor!`;
+        }
+
+        // Botão de música
+        document.getElementById('music-btn').addEventListener('click', function () {
+            const musicPlayer = document.getElementById('music-player');
+            musicPlayer.innerHTML = `
+                
+  <audio id="music-player" src="Tim Maia - Eu Amo Você(MP3_128K).mp3"></audio>
+            `;
+            // Substitua o link pelo embed da música de vocês
+        });
+
+        // Surpresa escondida
+        document.getElementById('surprise-btn').addEventListener('click', function () {
+            const surprise = document.getElementById('surprise-content');
+            surprise.style.display = 'block';
+
+            // Efeito de confete
+            for (let i = 0; i < 100; i++) {
+                createConfetti();
+            }
+        });
+
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.width = '10px';
+            confetti.style.height = '10px';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            confetti.style.left = `${Math.random() * 100}vw`;
+            confetti.style.top = '-10px';
+            confetti.style.borderRadius = '50%';
+            confetti.style.zIndex = '1000';
+            document.body.appendChild(confetti);
+
+            const animation = confetti.animate([
+                { top: '-10px', transform: 'rotate(0deg)' },
+                { top: `${Math.random() * 100 + 50}vh`, transform: 'rotate(360deg)' }
+            ], {
+                duration: Math.random() * 3000 + 2000,
+                easing: 'cubic-bezier(0.1, 0.2, 0.3, 1)'
+            });
+
+            animation.onfinish = () => confetti.remove();
+        }
+
+        // Animar itens da linha do tempo ao rolar
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        window.addEventListener('scroll', () => {
+            timelineItems.forEach(item => {
+                if (item.getBoundingClientRect().top < window.innerHeight - 100) {
+                    item.style.opacity = '1';
+                }
+            });
+        });
+
+        // Quiz
+        document.addEventListener('DOMContentLoaded', function () {
+            const quizBtns = document.querySelectorAll('.quiz-btn');
+            const quizResult = document.getElementById('quiz-result');
+            const scoreElement = document.getElementById('score');
+            const resultMessage = document.getElementById('result-message');
+            const retryBtn = document.getElementById('retry-btn');
+
+            let score = 0;
+            let answeredQuestions = 0;
+            const totalQuestions = document.querySelectorAll('.quiz-question').length;
+
+            quizBtns.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    if (this.classList.contains('correct') || this.classList.contains('wrong')) {
+                        return;
+                    }
+
+                    const isCorrect = this.getAttribute('data-correct') === 'true';
+
+                    if (isCorrect) {
+                        this.classList.add('correct');
+                        score++;
+                    } else {
+                        this.classList.add('wrong');
+                        const correctBtn = this.parentElement.querySelector('[data-correct="true"]');
+                        correctBtn.classList.add('correct');
+                    }
+
+                    answeredQuestions++;
+
+                    if (answeredQuestions === totalQuestions) {
+                        showResult();
+                    }
+                });
+            });
+
+            function showResult() {
+                scoreElement.textContent = score;
+
+                if (score === totalQuestions) {
+                    resultMessage.innerHTML = "Você acertou tudo!<br><br>Mas a verdadeira resposta é:<br><strong>Porque você é você</strong> ❤️";
+
+                } else if (score >= totalQuestions / 2) {
+                    resultMessage.textContent = "Boa! Mas precisamos conversar mais! 😊";
+                } else {
+                    resultMessage.textContent = "Hmm... Tem certeza que namora comigo? 😅";
+                }
+
+                quizResult.classList.remove('hidden');
+                window.scrollTo({
+                    top: quizResult.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            }
+
+            retryBtn.addEventListener('click', function () {
+                quizBtns.forEach(btn => {
+                    btn.classList.remove('correct', 'wrong');
+                });
+
+                score = 0;
+                answeredQuestions = 0;
+                quizResult.classList.add('hidden');
+            });
+        });
+
+        // Iniciar efeitos
+        window.onload = function () {
+            typeWriter();
+            updateCounter();
+
+        };
+        document.getElementById('loveReasonsBtn').addEventListener('click', function () {
+            document.getElementById('loveReasons').classList.toggle('hidden');
+        });
+    </script>
+
+
+</body>
+
+</html>
