@@ -4,106 +4,78 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>199 Motivos Para Te Amar</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Arial', sans-serif;
             background: linear-gradient(135deg, #ffcce6, #ffb3d9);
-            color: #800040;
             margin: 0;
             padding: 0;
             overflow: hidden;
             height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 2rem;
-            z-index: 10;
-        }
-
-        h1 {
-            font-family: 'Dancing Script', cursive;
-            font-size: 3rem;
-            color: #d23669;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .scrolling-container {
-            height: 60vh;
-            width: 80%;
-            max-width: 600px;
-            overflow: hidden;
             position: relative;
-            background-color: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            color: #800040;
         }
 
-        .scrolling-text {
+        #main-reason {
             position: absolute;
-            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2.5rem;
             text-align: center;
-            transition: transform 1.5s ease-in-out;
-        }
-
-        .reason {
-            font-size: 1.3rem;
-            margin: 1.5rem 0;
-            padding: 1rem;
-            background-color: rgba(255, 255, 255, 0.7);
-            border-radius: 15px;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            color: #d23669;
             opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 1s, transform 1s;
+            transition: all 1s;
+            z-index: 10;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            max-width: 80%;
+            padding: 20px;
+            background-color: rgba(255,255,255,0.8);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
-        .reason.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reason-number {
-            font-weight: bold;
-            color: #ff6b6b;
+        .memory-reason {
+            position: absolute;
+            font-size: 0.9rem;
+            color: #800040;
+            opacity: 0.8;
+            transition: all 2s;
+            cursor: pointer;
+            max-width: 120px;
+            text-align: center;
+            background-color: rgba(255,255,255,0.7);
+            padding: 8px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            z-index: 5;
         }
 
         .controls {
-            margin-top: 2rem;
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
             display: flex;
-            gap: 1rem;
-            z-index: 10;
+            gap: 10px;
         }
 
-        .btn {
+        .control-btn {
             background-color: #ff6b6b;
             color: white;
             border: none;
-            padding: 0.8rem 1.5rem;
+            padding: 10px 20px;
             border-radius: 50px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: bold;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
             transition: all 0.3s;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .btn:hover {
+        .control-btn:hover {
             background-color: #ff5252;
-            transform: translateY(-3px);
-        }
-
-        .hearts {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
+            transform: translateY(-2px);
         }
 
         .heart {
@@ -112,6 +84,8 @@
             color: rgba(255, 107, 107, 0.6);
             animation: float 5s linear infinite;
             opacity: 0;
+            z-index: 1;
+            pointer-events: none;
         }
 
         @keyframes float {
@@ -132,290 +106,313 @@
         }
 
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
+            #main-reason {
+                font-size: 1.8rem;
+                max-width: 90%;
             }
-            .scrolling-container {
-                width: 90%;
-                height: 50vh;
+            
+            .memory-reason {
+                font-size: 0.8rem;
+                max-width: 100px;
             }
-            .reason {
-                font-size: 1.1rem;
+            
+            .controls {
+                flex-direction: column;
+                width: 80%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="hearts" id="hearts"></div>
-    
-    <div class="header">
-        <h1>1 milhão de Motivos Para Te Amar ❤️</h1>
-    </div>
-
-    <div class="scrolling-container">
-        <div class="scrolling-text" id="scrollingText">
-            <!-- Os motivos serão inseridos aqui pelo JavaScript -->
-        </div>
-    </div>
+    <div id="main-reason"></div>
+    <div id="memories-container"></div>
+    <div id="hearts-container"></div>
 
     <div class="controls">
-        <button class="btn" id="pauseBtn">Pausar</button>
-        <button class="btn" id="speedBtn">Velocidade: Normal</button>
+        <button class="control-btn" id="pauseBtn">Pausar</button>
+        <button class="control-btn" id="speedBtn">Velocidade: Normal</button>
+        <button class="control-btn" id="clearBtn">Limpar</button>
     </div>
 
     <script>
         // Lista completa dos 199 motivos
         const reasons = [
-        "1. Seus olhos que me perdem na alma",
-        "2. Seu sorriso que ilumina meu dia",
-        "3. O jeito que você me abraça quando eu chego",
-        "4. A forma como você diz meu nome",
-        "5. Seu carinho mesmo nos dias difíceis",
-        "6. Seu olhar quando está concentrada",
-        "7. O modo como você se preocupa comigo",
-        "8. Sua risada contagiante",
-        "9. O jeito como você ajeita o cabelo",
-        "10. Seus conselhos que sempre me ajudam",
-        "11. O seu cheiro que me acalma",
-        "12. Quando você segura minha mão em silêncio",
-        "13. Como você me inspira a ser melhor",
-        "14. Sua inteligência que me encanta",
-        "15. O modo como você sonha grande",
-        "16. Seus pequenos gestos que dizem muito",
-        "17. Quando você me escuta de verdade",
-        "18. O toque suave da sua pele",
-        "19. Sua presença que preenche qualquer lugar",
-        "20. Quando você sorri só pra mim",
-        "21. Seu jeitinho quando está com sono",
-        "22. O modo como você me faz rir",
-        "23. Quando me surpreende com algo simples",
-        "24. O brilho nos seus olhos quando está feliz",
-        "25. Como você se importa com os outros",
-        "26. Sua força mesmo quando tudo parece difícil",
-        "27. Sua delicadeza com as palavras",
-        "28. A forma como você dança, mesmo sem música",
-        "29. Seu jeito único de ver o mundo",
-        "30. Sua autenticidade em tudo o que faz",
-        "31. O som da sua voz que me tranquiliza",
-        "32. Como você deixa tudo mais leve",
-        "33. Sua coragem diante do novo",
-        "34. Sua sensibilidade com os sentimentos",
-        "35. Sua capacidade de me fazer sorrir até nos dias ruins",
-        "36. O jeito como você toca meu rosto",
-        "37. Quando você faz planos comigo",
-        "38. Sua espontaneidade",
-        "39. Sua forma de me olhar quando acha graça",
-        "40. Como você cuida de quem ama",
-        "41. Seus valores que admiro tanto",
-        "42. Sua forma de enxergar beleza nas pequenas coisas",
-        "43. Como você me desafia a crescer",
-        "44. Quando você me abraça forte sem dizer nada",
-        "45. Seu bom humor nas horas certas",
-        "46. Sua generosidade com tudo e todos",
-        "47. Sua forma de perdoar",
-        "48. O quanto você é linda por dentro e por fora",
-        "49. Sua maneira de transformar o cotidiano em poesia",
-        "50. Seu jeito de fazer tudo com amor",
-        "51. Quando você segura minha cintura com carinho",
-        "52. Sua risadinha tímida",
-        "53. O modo como você observa o mundo",
-        "54. Como você transforma tristeza em esperança",
-        "55. A leveza que você traz à minha vida",
-        "56. Sua forma de lidar com desafios",
-        "57. Sua fé na vida",
-        "58. Como você é sincera sem ser dura",
-        "59. O amor que você transmite no olhar",
-        "60. O modo como me acalma com uma palavra",
-        "61. Quando você canta baixinho",
-        "62. Como você lembra de pequenos detalhes",
-        "63. Sua ternura com os animais",
-        "64. Sua alegria ao ver a chuva",
-        "65. Como você me dá forças quando eu mesmo não consigo",
-        "66. Sua compaixão",
-        "67. O jeito que você fica quando está empolgada",
-        "68. Seu entusiasmo por coisas simples",
-        "69. Sua paciência comigo",
-        "70. Quando você me entende sem eu dizer nada",
-        "71. Sua elegância natural",
-        "72. Como você fica linda sem esforço",
-        "73. O jeito como você me espera",
-        "74. Sua calma quando estou nervoso",
-        "75. O modo como você sonha ao meu lado",
-        "76. Quando você ri das minhas bobagens",
-        "77. Como você respeita meu espaço",
-        "78. Sua admiração pelas estrelas",
-        "79. O calor do seu abraço",
-        "80. Seu cuidado com os detalhes",
-        "81. O amor que você coloca no que faz",
-        "82. Sua forma de me olhar quando estou distraído",
-        "83. Quando você fala de coisas que ama",
-        "84. Sua expressão quando está apaixonada",
-        "85. Sua voz dizendo que me ama",
-        "86. Como você fica linda de qualquer jeito",
-        "87. Sua delicadeza ao cozinhar pra mim",
-        "88. Sua espontaneidade em dizer o que sente",
-        "89. O modo como você se joga no sofá",
-        "90. Como você me incentiva a sonhar",
-        "91. Sua vontade de aprender sempre mais",
-        "92. O jeito como você anda, com graça e leveza",
-        "93. Sua forma de me fazer sentir em casa",
-        "94. Seu cuidado com cada mensagem que me envia",
-        "95. Como você vibra com as conquistas dos outros",
-        "96. Sua determinação com o que acredita",
-        "97. Seu respeito pelas diferenças",
-        "98. O brilho no seu olhar quando fala de amor",
-        "99. Como você sorri só com os olhos",
-        "100. Quando você divide seus sonhos comigo",
-        "101. Sua lealdade",
-        "102. A forma como você valoriza cada momento",
-        "103. Seu carinho ao acordar",
-        "104. Sua forma de se emocionar com filmes",
-        "105. Sua voz baixinha dizendo 'boa noite'",
-        "106. Quando você segura meu braço na rua",
-        "107. Seu coração gigante",
-        "108. Como você sente tudo com intensidade",
-        "109. Sua alma linda",
-        "110. Sua curiosidade sobre o mundo",
-        "111. Sua ética em tudo o que faz",
-        "112. Seu jeito de organizar as coisas",
-        "113. Como você cuida de quem precisa",
-        "114. Sua pureza de alma",
-        "115. Seu orgulho ao me ver crescer",
-        "116. Sua forma de valorizar o presente",
-        "117. Sua coragem de amar",
-        "118. O jeito que você me chama com carinho",
-        "119. Sua atenção com os pequenos detalhes",
-        "120. Como você se emociona com uma flor",
-        "121. Sua paixão pelas palavras",
-        "122. Sua ternura com crianças",
-        "123. Sua intensidade quando fala do que ama",
-        "124. Quando você canta só pra mim",
-        "125. Seu jeitinho dormindo",
-        "126. O modo como você se importa mesmo quando diz que não",
-        "127. Sua liberdade de ser quem é",
-        "128. Sua forma de sorrir com o coração",
-        "129. Sua voz no telefone",
-        "130. Quando você me surpreende com um gesto",
-        "131. Sua presença que conforta",
-        "132. O calor da sua pele",
-        "133. Sua dedicação nos estudos",
-        "134. Como você sonha por dois",
-        "135. Sua fé no amor",
-        "136. Como você me valoriza",
-        "137. Seu perfume favorito",
-        "138. Sua teimosia fofa",
-        "139. Seu apoio mesmo nas minhas loucuras",
-        "140. Sua forma de se arrumar pra mim",
-        "141. Seu olhar carinhoso de longe",
-        "142. Sua simplicidade encantadora",
-        "143. Sua doçura ao falar comigo",
-        "144. Sua forma de dizer 'fica comigo'",
-        "145. O jeito como você se expressa com as mãos",
-        "146. Sua honestidade que me inspira",
-        "147. Como você se faz presente mesmo longe",
-        "148. Seu talento em tantas coisas",
-        "149. Sua naturalidade em ser incrível",
-        "150. Quando você canta no banho",
-        "151. Sua mania de mexer no cabelo",
-        "152. Como você enxerga beleza onde ninguém vê",
-        "153. Sua forma de amar sem medo",
-        "154. O jeito como você sonha acordada",
-        "155. Como você me faz sentir único",
-        "156. Sua admiração por mim",
-        "157. Sua risada nas horas mais bobas",
-        "158. Sua coragem de mudar",
-        "159. Seu jeitinho ciumento",
-        "160. Sua tranquilidade em meio ao caos",
-        "161. Sua voz me chamando de amor",
-        "162. Seu toque nos meus cabelos",
-        "163. Como você cuida de mim em silêncio",
-        "164. Sua sinceridade doce",
-        "165. Quando você diz que sente saudade",
-        "166. O modo como você me olha quando está feliz",
-        "167. Seu carinho quando estou doente",
-        "168. Sua vibração por cada conquista minha",
-        "169. Sua alma generosa",
-        "170. Sua beleza sem filtro",
-        "171. Sua essência leve",
-        "172. O jeito como você me respeita",
-        "173. Como você me ajuda a ver o melhor em mim",
-        "174. Seu encantamento pelas coisas simples",
-        "175. Seu jeito de cuidar do nosso amor",
-        "176. Quando você me abraça por trás",
-        "177. Sua forma de dizer 'eu tô aqui'",
-        "178. Sua sensibilidade com palavras",
-        "179. Seu toque que arrepia",
-        "180. Quando você se joga no meu colo",
-        "181. Sua maneira de dizer 'fica mais um pouco'",
-        "182. Sua vontade de construir algo comigo",
-        "183. Sua companhia nos silêncios",
-        "184. Seu cheiro no meu travesseiro",
-        "185. Seu sorriso quando está com vergonha",
-        "186. Sua forma de fazer planos pra nós",
-        "187. Sua coragem em ser vulnerável",
-        "188. Seu brilho em dias cinzas",
-        "189. Sua energia que me contagia",
-        "190. Seu abraço que me cura",
-        "191. Como você me escolhe todos os dias",
-        "192. Sua voz dizendo 'vai dar certo'",
-        "193. Sua maneira de ser lar",
-        "194. Como você torna tudo mais bonito",
-        "195. Seu amor que me preenche",
-        "196. Seu cuidado em cada detalhe",
-        "197. Sua luz que me guia",
-        "198. Sua doçura em tudo que faz",
-        "199. O simples fato de você existir"
-    ];
+            "1. Seus olhos que me perdem na alma",
+            "2. Seu sorriso que ilumina meu dia",
+            "3. O jeito que você me abraça quando eu chego",
+            "4. A forma como você diz meu nome",
+            "5. Seu carinho mesmo nos dias difíceis",
+            "6. Seu olhar quando está concentrada",
+            "7. O modo como você se preocupa comigo",
+            "8. Sua risada contagiante",
+            "9. O jeito como você ajeita o cabelo",
+            "10. Seus conselhos que sempre me ajudam",
+            "11. O seu cheiro que me acalma",
+            "12. Quando você segura minha mão em silêncio",
+            "13. Como você me inspira a ser melhor",
+            "14. Sua inteligência que me encanta",
+            "15. O modo como você sonha grande",
+            "16. Seus pequenos gestos que dizem muito",
+            "17. Quando você me escuta de verdade",
+            "18. O toque suave da sua pele",
+            "19. Sua presença que preenche qualquer lugar",
+            "20. Quando você sorri só pra mim",
+            "21. Seu jeitinho quando está com sono",
+            "22. O modo como você me faz rir",
+            "23. Quando me surpreende com algo simples",
+            "24. O brilho nos seus olhos quando está feliz",
+            "25. Como você se importa com os outros",
+            "26. Sua força mesmo quando tudo parece difícil",
+            "27. Sua delicadeza com as palavras",
+            "28. A forma como você dança, mesmo sem música",
+            "29. Seu jeito único de ver o mundo",
+            "30. Sua autenticidade em tudo o que faz",
+            "31. O som da sua voz que me tranquiliza",
+            "32. Como você deixa tudo mais leve",
+            "33. Sua coragem diante do novo",
+            "34. Sua sensibilidade com os sentimentos",
+            "35. Sua capacidade de me fazer sorrir até nos dias ruins",
+            "36. O jeito como você toca meu rosto",
+            "37. Quando você faz planos comigo",
+            "38. Sua espontaneidade",
+            "39. Sua forma de me olhar quando acha graça",
+            "40. Como você cuida de quem ama",
+            "41. Seus valores que admiro tanto",
+            "42. Sua forma de enxergar beleza nas pequenas coisas",
+            "43. Como você me desafia a crescer",
+            "44. Quando você me abraça forte sem dizer nada",
+            "45. Seu bom humor nas horas certas",
+            "46. Sua generosidade com tudo e todos",
+            "47. Sua forma de perdoar",
+            "48. O quanto você é linda por dentro e por fora",
+            "49. Sua maneira de transformar o cotidiano em poesia",
+            "50. Seu jeito de fazer tudo com amor",
+            "51. Quando você segura minha cintura com carinho",
+            "52. Sua risadinha tímida",
+            "53. O modo como você observa o mundo",
+            "54. Como você transforma tristeza em esperança",
+            "55. A leveza que você traz à minha vida",
+            "56. Sua forma de lidar com desafios",
+            "57. Sua fé na vida",
+            "58. Como você é sincera sem ser dura",
+            "59. O amor que você transmite no olhar",
+            "60. O modo como me acalma com uma palavra",
+            "61. Quando você canta baixinho",
+            "62. Como você lembra de pequenos detalhes",
+            "63. Sua ternura com os animais",
+            "64. Sua alegria ao ver a chuva",
+            "65. Como você me dá forças quando eu mesmo não consigo",
+            "66. Sua compaixão",
+            "67. O jeito que você fica quando está empolgada",
+            "68. Seu entusiasmo por coisas simples",
+            "69. Sua paciência comigo",
+            "70. Quando você me entende sem eu dizer nada",
+            "71. Sua elegância natural",
+            "72. Como você fica linda sem esforço",
+            "73. O jeito como você me espera",
+            "74. Sua calma quando estou nervoso",
+            "75. O modo como você sonha ao meu lado",
+            "76. Quando você ri das minhas bobagens",
+            "77. Como você respeita meu espaço",
+            "78. Sua admiração pelas estrelas",
+            "79. O calor do seu abraço",
+            "80. Seu cuidado com os detalhes",
+            "81. O amor que você coloca no que faz",
+            "82. Sua forma de me olhar quando estou distraído",
+            "83. Quando você fala de coisas que ama",
+            "84. Sua expressão quando está apaixonada",
+            "85. Sua voz dizendo que me ama",
+            "86. Como você fica linda de qualquer jeito",
+            "87. Sua delicadeza ao cozinhar pra mim",
+            "88. Sua espontaneidade em dizer o que sente",
+            "89. O modo como você se joga no sofá",
+            "90. Como você me incentiva a sonhar",
+            "91. Sua vontade de aprender sempre mais",
+            "92. O jeito como você anda, com graça e leveza",
+            "93. Sua forma de me fazer sentir em casa",
+            "94. Seu cuidado com cada mensagem que me envia",
+            "95. Como você vibra com as conquistas dos outros",
+            "96. Sua determinação com o que acredita",
+            "97. Seu respeito pelas diferenças",
+            "98. O brilho no seu olhar quando fala de amor",
+            "99. Como você sorri só com os olhos",
+            "100. Quando você divide seus sonhos comigo",
+            "101. Sua lealdade",
+            "102. A forma como você valoriza cada momento",
+            "103. Seu carinho ao acordar",
+            "104. Sua forma de se emocionar com filmes",
+            "105. Sua voz baixinha dizendo 'boa noite'",
+            "106. Quando você segura meu braço na rua",
+            "107. Seu coração gigante",
+            "108. Como você sente tudo com intensidade",
+            "109. Sua alma linda",
+            "110. Sua curiosidade sobre o mundo",
+            "111. Sua ética em tudo o que faz",
+            "112. Seu jeito de organizar as coisas",
+            "113. Como você cuida de quem precisa",
+            "114. Sua pureza de alma",
+            "115. Seu orgulho ao me ver crescer",
+            "116. Sua forma de valorizar o presente",
+            "117. Sua coragem de amar",
+            "118. O jeito que você me chama com carinho",
+            "119. Sua atenção com os pequenos detalhes",
+            "120. Como você se emociona com uma flor",
+            "121. Sua paixão pelas palavras",
+            "122. Sua ternura com crianças",
+            "123. Sua intensidade quando fala do que ama",
+            "124. Quando você canta só pra mim",
+            "125. Seu jeitinho dormindo",
+            "126. O modo como você se importa mesmo quando diz que não",
+            "127. Sua liberdade de ser quem é",
+            "128. Sua forma de sorrir com o coração",
+            "129. Sua voz no telefone",
+            "130. Quando você me surpreende com um gesto",
+            "131. Sua presença que conforta",
+            "132. O calor da sua pele",
+            "133. Sua dedicação nos estudos",
+            "134. Como você sonha por dois",
+            "135. Sua fé no amor",
+            "136. Como você me valoriza",
+            "137. Seu perfume favorito",
+            "138. Sua teimosia fofa",
+            "139. Seu apoio mesmo nas minhas loucuras",
+            "140. Sua forma de se arrumar pra mim",
+            "141. Seu olhar carinhoso de longe",
+            "142. Sua simplicidade encantadora",
+            "143. Sua doçura ao falar comigo",
+            "144. Sua forma de dizer 'fica comigo'",
+            "145. O jeito como você se expressa com as mãos",
+            "146. Sua honestidade que me inspira",
+            "147. Como você se faz presente mesmo longe",
+            "148. Seu talento em tantas coisas",
+            "149. Sua naturalidade em ser incrível",
+            "150. Quando você canta no banho",
+            "151. Sua mania de mexer no cabelo",
+            "152. Como você enxerga beleza onde ninguém vê",
+            "153. Sua forma de amar sem medo",
+            "154. O jeito como você sonha acordada",
+            "155. Como você me faz sentir único",
+            "156. Sua admiração por mim",
+            "157. Sua risada nas horas mais bobas",
+            "158. Sua coragem de mudar",
+            "159. Seu jeitinho ciumento",
+            "160. Sua tranquilidade em meio ao caos",
+            "161. Sua voz me chamando de amor",
+            "162. Seu toque nos meus cabelos",
+            "163. Como você cuida de mim em silêncio",
+            "164. Sua sinceridade doce",
+            "165. Quando você diz que sente saudade",
+            "166. O modo como você me olha quando está feliz",
+            "167. Seu carinho quando estou doente",
+            "168. Sua vibração por cada conquista minha",
+            "169. Sua alma generosa",
+            "170. Sua beleza sem filtro",
+            "171. Sua essência leve",
+            "172. O jeito como você me respeita",
+            "173. Como você me ajuda a ver o melhor em mim",
+            "174. Seu encantamento pelas coisas simples",
+            "175. Seu jeito de cuidar do nosso amor",
+            "176. Quando você me abraça por trás",
+            "177. Sua forma de dizer 'eu tô aqui'",
+            "178. Sua sensibilidade com palavras",
+            "179. Seu toque que arrepia",
+            "180. Quando você se joga no meu colo",
+            "181. Sua maneira de dizer 'fica mais um pouco'",
+            "182. Sua vontade de construir algo comigo",
+            "183. Sua companhia nos silêncios",
+            "184. Seu cheiro no meu travesseiro",
+            "185. Seu sorriso quando está com vergonha",
+            "186. Sua forma de fazer planos pra nós",
+            "187. Sua coragem em ser vulnerável",
+            "188. Seu brilho em dias cinzas",
+            "189. Sua energia que me contagia",
+            "190. Seu abraço que me cura",
+            "191. Como você me escolhe todos os dias",
+            "192. Sua voz dizendo 'vai dar certo'",
+            "193. Sua maneira de ser lar",
+            "194. Como você torna tudo mais bonito",
+            "195. Seu amor que me preenche",
+            "196. Seu cuidado em cada detalhe",
+            "197. Sua luz que me guia",
+            "198. Sua doçura em tudo que faz",
+            "199. O simples fato de você existir"
+        ];
 
         // Configurações
         let currentIndex = 0;
         let isPaused = false;
-        let scrollSpeed = 3000; // 3 segundos por motivo
+        let speed = 3000; // 3 segundos
+        let timeout;
+        let memories = [];
         let heartsInterval;
 
-        // Inicializa a rolagem
-        function initScroll() {
-            const container = document.getElementById('scrollingText');
-            
-            // Cria elementos para cada motivo
-            reasons.forEach((reason, index) => {
-                const reasonElement = document.createElement('div');
-                reasonElement.className = 'reason';
-                reasonElement.id = `reason-${index}`;
-                reasonElement.innerHTML = `<span class="reason-number">${reason.split('.')[0]}.</span> ${reason.split('. ')[1]}`;
-                container.appendChild(reasonElement);
-            });
+        // Elementos DOM
+        const mainReason = document.getElementById('main-reason');
+        const memoriesContainer = document.getElementById('memories-container');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const speedBtn = document.getElementById('speedBtn');
+        const clearBtn = document.getElementById('clearBtn');
 
-            // Começa a animação
-            showNextReason();
-        }
-
-        // Mostra o próximo motivo
-        function showNextReason() {
-            if (isPaused) return;
-
-            const currentReason = document.getElementById(`reason-${currentIndex}`);
-            const nextIndex = (currentIndex + 1) % reasons.length;
-            const nextReason = document.getElementById(`reason-${nextIndex}`);
-
-            // Ativa o motivo atual
-            if (currentReason) {
-                currentReason.classList.add('active');
+        // Mostra um motivo
+        function showReason(index) {
+            if (index >= reasons.length) {
+                index = 0; // Volta ao início
             }
 
-            // Rola para o próximo motivo
+            // Mostra grande no centro
+            const [number, text] = reasons[index].split('. ');
+            mainReason.innerHTML = `<span style="font-size: 1rem; color: #ff6b6b;">${number}.</span><br>${text}`;
+            mainReason.style.opacity = '1';
+            mainReason.style.fontSize = '2.5rem';
+            mainReason.style.transform = 'translate(-50%, -50%) scale(1)';
+
+            // Depois de 3 segundos, reduz e posiciona na tela
+            timeout = setTimeout(() => {
+                // Cria memória na tela
+                createMemory(reasons[index]);
+                
+                // Prepara próximo motivo
+                mainReason.style.opacity = '0';
+                mainReason.style.transform = 'translate(-50%, -50%) scale(0.5)';
+                
+                setTimeout(() => {
+                    currentIndex = index + 1;
+                    if (!isPaused) showReason(currentIndex);
+                }, 1000);
+            }, speed);
+        }
+
+        // Cria um "lembrete" na tela
+        function createMemory(reason) {
+            const memory = document.createElement('div');
+            memory.className = 'memory-reason';
+            const [number, text] = reason.split('. ');
+            memory.innerHTML = `<span style="font-size: 0.7em; color: #ff6b6b;">${number}.</span> ${text}`;
+            
+            // Posição aleatória (evitando cantos)
+            const posX = 5 + Math.random() * 90;
+            const posY = 5 + Math.random() * 90;
+            
+            memory.style.left = `${posX}%`;
+            memory.style.top = `${posY}%`;
+            memory.style.transform = 'scale(0)';
+            memory.style.opacity = '0';
+            
+            memoriesContainer.appendChild(memory);
+            memories.push(memory);
+            
+            // Animação de entrada
             setTimeout(() => {
-                if (currentReason) {
-                    currentReason.classList.remove('active');
-                }
-                nextReason.classList.add('active');
-                
-                // Atualiza posição de rolagem
-                document.getElementById('scrollingText').style.transform = `translateY(-${nextIndex * 100}px)`;
-                
-                currentIndex = nextIndex;
-                showNextReason();
-            }, scrollSpeed);
+                memory.style.opacity = '0.8';
+                memory.style.transform = 'scale(1)';
+            }, 100);
+            
+            // Remove se houver muitos
+            if (memories.length > 20) {
+                const oldest = memories.shift();
+                oldest.style.opacity = '0';
+                setTimeout(() => oldest.remove(), 1000);
+            }
         }
 
         // Cria corações flutuantes
@@ -426,43 +423,60 @@
                 heart.innerHTML = '❤️';
                 heart.style.left = Math.random() * 100 + 'vw';
                 heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-                document.getElementById('hearts').appendChild(heart);
+                document.getElementById('hearts-container').appendChild(heart);
 
-                // Remove o coração após a animação
-                setTimeout(() => {
-                    heart.remove();
-                }, 5000);
+                setTimeout(() => heart.remove(), 5000);
             }, 300);
         }
 
+        // Limpa todas as memórias
+        function clearMemories() {
+            memories.forEach(memory => {
+                memory.style.opacity = '0';
+                setTimeout(() => memory.remove(), 1000);
+            });
+            memories = [];
+        }
+
         // Controles
-        document.getElementById('pauseBtn').addEventListener('click', function() {
+        pauseBtn.addEventListener('click', () => {
             isPaused = !isPaused;
-            this.textContent = isPaused ? 'Continuar' : 'Pausar';
+            pauseBtn.textContent = isPaused ? 'Continuar' : 'Pausar';
             
             if (!isPaused) {
-                showNextReason();
-            }
-        });
-
-        document.getElementById('speedBtn').addEventListener('click', function() {
-            if (scrollSpeed === 3000) {
-                scrollSpeed = 1500;
-                this.textContent = 'Velocidade: Rápida';
-            } else if (scrollSpeed === 1500) {
-                scrollSpeed = 5000;
-                this.textContent = 'Velocidade: Devagar';
+                showReason(currentIndex);
             } else {
-                scrollSpeed = 3000;
-                this.textContent = 'Velocidade: Normal';
+                clearTimeout(timeout);
             }
         });
 
-        // Inicia tudo quando a página carrega
-        window.onload = function() {
-            initScroll();
+        speedBtn.addEventListener('click', () => {
+            if (speed === 3000) {
+                speed = 1500;
+                speedBtn.textContent = 'Velocidade: Rápida';
+            } else if (speed === 1500) {
+                speed = 5000;
+                speedBtn.textContent = 'Velocidade: Devagar';
+            } else {
+                speed = 3000;
+                speedBtn.textContent = 'Velocidade: Normal';
+            }
+            
+            if (!isPaused) {
+                clearTimeout(timeout);
+                showReason(currentIndex);
+            }
+        });
+
+        clearBtn.addEventListener('click', clearMemories);
+
+        // Inicia
+        function init() {
+            showReason(currentIndex);
             createHearts();
-        };
+        }
+
+        window.onload = init;
     </script>
 </body>
 </html>
